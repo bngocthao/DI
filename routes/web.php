@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\NguoiDungController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,4 +35,9 @@ Auth::routes([
 // $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 // $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('NguoiDung.home')->middleware('verified');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified');
+
+
+Route::resource('admin/users', NguoiDungController::class,[
+    'as' => 'admin',
+])->middleware('verified');
