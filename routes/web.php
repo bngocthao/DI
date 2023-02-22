@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DonXinVangController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\NguoiDungController;
 /*
@@ -23,7 +24,7 @@ Auth::routes([
 ]);
 // $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
 // $this->post('login', 'Auth\LoginController@login');
-// $this->post('logout', 'Auth\LoginController@logout')->name('logout');
+// $this->get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // // Registration Routes...
 // $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
@@ -37,7 +38,12 @@ Auth::routes([
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified');
 
-
 Route::resource('admin/users', NguoiDungController::class,[
     'as' => 'admin',
 ])->middleware('verified');
+
+Route::resource('admin/postponse_req', DonXinVangController::class,[
+    'as' => 'admin',
+])->middleware('verified');
+
+Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('home/logout');

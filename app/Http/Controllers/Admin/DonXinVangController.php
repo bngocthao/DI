@@ -1,16 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
-use App\Models\NguoiDung;
-use Illuminate\Http\Request;
-use app\Service\AdminService\NguoiDungService;
-use GrahamCampbell\ResultType\Success;
-use RealRashid\SweetAlert\Facades\Alert;
-use Redirect;
 
-class NguoiDungController extends Controller
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\DonXinVang;
+use Illuminate\Support\Facades\Auth;
+use App\Models\NguoiDung;
+
+class DonXinVangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +24,7 @@ class NguoiDungController extends Controller
             'users' => $users,
             'user' => $user,
         ];
-        return view('admin.quanly_nguoidung.index', $context);
+        return view('admin.quanly_don_xin_diem.index', $context);
     }
 
     /**
@@ -36,7 +34,9 @@ class NguoiDungController extends Controller
      */
     public function create()
     {
-        return view('admin.quanly_nguoidung.new_user');
+        $id = Auth::id();
+        $user = NguoiDung::find($id);
+        return view('admin.quanly_don_xin_diem.new_form', compact('user'));
     }
 
     /**
@@ -58,12 +58,7 @@ class NguoiDungController extends Controller
      */
     public function show($id)
     {
-        $id = Auth::id();
-        $user = NguoiDung::find($id);
-        $context = [
-            'user' => $user,
-        ];
-        return view('admin.quanly_nguoidung.view_info', $context);
+        //
     }
 
     /**
@@ -74,8 +69,7 @@ class NguoiDungController extends Controller
      */
     public function edit($id)
     {
-        $user = NguoiDung::find($id);
-        return view ('admin.quanly_nguoidung.info', compact('user')); 
+        //
     }
 
     /**
@@ -87,15 +81,7 @@ class NguoiDungController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = NguoiDung::find($id)->update($request->all());
-        if($update){
-            Alert::success('Cập nhật Thành Công');
-            return Redirect::back();
-        }else{
-            Alert::error('Cập nhật Thất Bại');
-            return Redirect::back();
-
-        }
+        //
     }
 
     /**
@@ -106,19 +92,6 @@ class NguoiDungController extends Controller
      */
     public function destroy($id)
     {
-        $user = NguoiDung::find($id);
-        Alert::question('Bạn Có Chắc Muốn Xóa Bản Ghi Này?');
-        return Redirect::back();
-        if($user){
-            $destroy = NguoiDung::destroy($id);
-            if ($destroy){
-                Alert::success('Đã Xóa Thành Công');
-                return Redirect::back();
-            }else{
-                Alert::error('Đã Xóa Thất Bại');
-                return Redirect::back();
-    
-            }
-        }
+        //
     }
 }

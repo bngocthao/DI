@@ -36,8 +36,10 @@
             </div>
         </div>
     </div> --}}
+
+    {{-- <div class="lds-ripple"><div></div><div></div></div> --}}
     <!-- Pre-loader end -->
-    <div id="pcoded" class="pcoded">
+    <div id="pcoded" class="pcoded ">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper ">
 
@@ -80,12 +82,12 @@
                                             </a>
                                         </li> --}}
                                         <li>
-                                            <a href="user-profile.htm">
+                                            <a href="{{route('admin.users.show',$user->id)}}">
                                                 <i class="feather icon-user"></i> Chi tiết
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{route('logout')}}">
+                                            <a href="{{route('home/logout')}}">
                                                 <i class="feather icon-log-out"></i> Đăng xuất
                                             </a>
                                         </li>
@@ -146,7 +148,7 @@
                                                 </a>
                                             </li> --}}
                                             <li class="active">
-                                                <a href="#">
+                                                <a href="{{route('admin.postponse_req.index')}}">
                                                     <span class="pcoded-mtext">Danh Sách Đơn</span>
                                                 </a>
                                             </li>
@@ -180,6 +182,7 @@
 
                             </ul>
                         </div>
+                        
                         {{-- navbar menu end --}}
 
                     </nav>

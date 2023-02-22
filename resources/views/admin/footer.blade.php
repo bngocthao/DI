@@ -52,3 +52,4 @@
 
   
 </script>
+@include('sweetalert::alert')

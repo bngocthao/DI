@@ -20,14 +20,14 @@
 
     @include('admin.navbar')
     
-    {{-- Trang hiển thị danh sách người dùng --}}
+    {{-- Trang hiển thị danh sách đơn xin điểm --}}
 
     <!-- Edit With Button card start -->
     <div class="card">
     <div class="card-header">
         {{-- <h5>Danh sách người dùng</h5> --}}
         {{-- <span>Click on buttons to perform actions</span> --}}
-        <a href="{{route('admin.users.create')}}" class="btn btn-primary waves-effect waves-light" style="float: none;margin: 5px;">Thêm Người Dùng</a>
+        <a href="{{route('admin.postponse_req.create')}}" class="btn btn-primary waves-effect waves-light" style="float: none;margin: 5px;">Tạo đơn mới</a>
 
 
     </div>
@@ -37,20 +37,20 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Mã Số</th>
-                        <th>Họ Tên</th>
-                        <th>Email</th>
-                        <th>Vai Trò</th>
+                        <th>Mã Đơn</th>
+                        <th>Tiêu Đề</th>
+                        <th>Trạng Thái</th>
+                        <th>Học Kỳ</th>
                         <th class="tabledit-toolbar-column" style="text-align: center;">Công Cụ</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $u)
                     <tr>
-                        <th scope="row">{{ $u->id}}</th>
-                        <th scope="row">{{ $u->ma_nguoi_dung}}</th>
-                        <th scope="row">{{ $u->ho_ten}}</th>
-                        <th scope="row">{{ $u->email}}</th>
+                        <th scope="row">{{ $u->id ?? "Trống"}}</th>
+                        <th scope="row">{{ $u->tieu_de ?? "Trống"}}</th>
+                        <th scope="row">{{ $u->trang_thai ?? "Trống"}}</th>
+                        <th scope="row">#</th>
                         <th scope="row">#</th>
                         {{-- Các button --}}
                         <td style="white-space: nowrap; width: 1%;">
